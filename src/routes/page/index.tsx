@@ -146,6 +146,10 @@ export default function Page() {
     }
   }
 
+  const upLoadImage = () => {
+    window.open(`http://localhost:3001/#/uploadImage`)
+  }
+
   
 
   return (
@@ -154,6 +158,8 @@ export default function Page() {
       <div className='pageLeft'>
         <div className='leftHeader'>XinBuilder</div>
         <div className='leftDiscribe'>轻量级的低代码平台</div>
+        <Divider />
+        <Button onClick={upLoadImage} size='large' type='link'>图片管理</Button>
         <Divider />
       </div>
       <div className='pageRight'>

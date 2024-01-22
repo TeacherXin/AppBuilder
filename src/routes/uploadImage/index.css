@@ -1,0 +1,11 @@
+.imageItem {
+  width: 240px;
+  margin-left: 20px;
+  height: 40px;
+  text-align: left;
+  line-height: 40px;
+}
+
+.imageItem:hover {
+  background-color: aliceblue;
+}
