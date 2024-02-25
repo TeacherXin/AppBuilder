@@ -150,6 +150,10 @@ export default function Page() {
     window.open(`http://localhost:3001/#/uploadImage`)
   }
 
+  const toDataBase = () => {
+    window.open(`http://localhost:3001/#/dataBase`)
+  }
+
   
 
   return (
@@ -160,6 +164,8 @@ export default function Page() {
         <div className='leftDiscribe'>轻量级的低代码平台</div>
         <Divider />
         <Button onClick={upLoadImage} size='large' type='link'>图片管理</Button>
+        <Divider />
+        <Button onClick={toDataBase} size='large' type='link'>数据库管理</Button>
         <Divider />
       </div>
       <div className='pageRight'>
