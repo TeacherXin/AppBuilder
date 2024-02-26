@@ -26,6 +26,7 @@ export default function DataBase (props: IDataBaseProps) {
   const [schemaList, setSchemaList] = useState<any []>([])
   const [entityCode, setEntityCode] = useState<string>('')
   const [entityName, setEntityName] = useState<string>('')
+  const [entityData, setEntityData] = useState<any []>([])
 
   useEffect(() => {
     getEntityList()
@@ -34,6 +35,7 @@ export default function DataBase (props: IDataBaseProps) {
   useEffect(() => {
     const columns = getColumns();
     setColumns(columns)
+    dealEntityData();
   }, [entity])
 
   const getEntityList = () => {
@@ -52,6 +54,17 @@ export default function DataBase (props: IDataBaseProps) {
         title: propName,
         dataIndex: propName,
         key: propName
+      }
+    })
+  }
+
+  const dealEntityData = () => {
+    axios.post('http://localhost:4000/entity/getEntityData', {
+      entityCode: entity?.entityCode
+    })
+    .then(res => {
+      if(res.data.data) {
+        setEntityData(res.data.data)
       }
     })
   }
@@ -138,6 +151,7 @@ export default function DataBase (props: IDataBaseProps) {
           <Table
             style={{width: 1300, marginTop:'20px', marginLeft:'20px'}}
             columns={columns}
+            dataSource={entityData}
           />
       </div>
       <Modal
