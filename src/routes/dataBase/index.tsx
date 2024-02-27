@@ -35,7 +35,9 @@ export default function DataBase (props: IDataBaseProps) {
   useEffect(() => {
     const columns = getColumns();
     setColumns(columns)
-    dealEntityData();
+    if(columns.length > 0) {
+      dealEntityData();
+    }
   }, [entity])
 
   const getEntityList = () => {
@@ -64,7 +66,10 @@ export default function DataBase (props: IDataBaseProps) {
     })
     .then(res => {
       if(res.data.data) {
-        setEntityData(res.data.data)
+        const data = res.data.data.map((item: object, index:number) => {
+          return {...item, key: index}
+        })
+        setEntityData(data)
       }
     })
   }
