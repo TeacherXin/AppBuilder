@@ -146,6 +146,12 @@ export default function Page() {
     }
   }
 
+  const toRenderPage = (pageId: string) => {
+    return () => {
+      window.open(`http://localhost:3000/render?pageId=${pageId}`)
+    }
+  }
+
   const upLoadImage = () => {
     window.open(`http://localhost:3001/#/uploadImage`)
   }
@@ -189,7 +195,7 @@ export default function Page() {
                   >
                     <div style={{height:'50px'}}>
                       <Button type='text' onClick={toBuilderPage(item.pageId)}>编辑页面</Button>
-                      <Button type='text'>预览页面</Button>
+                      <Button type='text' onClick={toRenderPage(item.pageId)}>预览页面</Button>
                     </div>
                   </Card>
                 </Col>
